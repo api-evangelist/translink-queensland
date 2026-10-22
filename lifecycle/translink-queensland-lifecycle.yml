@@ -1,0 +1,8 @@
+generated: '2026-10-22'
+method: searched
+source: https://translink.com.au/about-translink/open-data/terms-and-conditions
+versioning: 'No API versioning policy is published. The feeds are GTFS Realtime v2.0 by declaration on the open data page; the GTFS schedule dataset on data.qld.gov.au has update_frequency "annually" in its CKAN metadata (metadata_modified 2026-09-02).'
+deprecation: 'No deprecation or sunset policy. The terms state: "The State currently offers the Data free of charge, subject to these terms and conditions, and reserves the right to change, update, alter, add to or remove Data from time to time without notice."'
+sla: 'None. The terms say the State "gives no warranty in relation to the Data (including accuracy, reliability, completeness, currency, suitability or continuity of service)".'
+status_page: null
+deprecated_operations: []

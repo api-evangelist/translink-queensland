@@ -1,0 +1,40 @@
+generated: '2026-10-22'
+method: searched
+source: https://translink.com.au/about-translink/open-data
+surface: read-only
+auth:
+  style: none
+  evidence: '"Authentication is not required to use the feed."'
+  see: authentication/translink-queensland-authentication.yml
+format:
+  realtime: GTFS Realtime v2.0, Protobuf (application/x-protobuf)
+  schedule: GTFS static datasets downloaded from data.qld.gov.au
+resource_paths:
+  pattern: /api/realtime/{region}/{feed}[/{mode}]
+  regions: [SEQ, CNS]
+  feeds: [TripUpdates, VehiclePositions, alerts]
+  modes: [Bus, Rail, Tram, Ferry]
+  note: Per-mode feeds are published for SEQ only; paths copied from links on the open data page.
+caching:
+  method: probed
+  observed: 'GET https://gtfsrt.api.translink.com.au/api/realtime/SEQ/alerts (2026-10-22) returned cache-control: public, max-age=10, an etag and a last-modified header.'
+idempotency:
+  coverage: na
+  note: The surface is GET-only open data feeds; there are no write operations.
+reversibility:
+  coverage: na
+  note: Read-only API; no write surface to reverse.
+dry_run_mode: na
+pagination:
+  style: none
+  note: Each feed is a single complete FeedMessage snapshot.
+versioning:
+  note: 'No API versioning policy is published. The feed format is pinned to GTFS-RT v2.0. The terms state the State "reserves the right to change, update, alter, add to or remove Data from time to time without notice."'
+  see: lifecycle/translink-queensland-lifecycle.yml
+rate_limit_signaling:
+  note: No rate limits or rate-limit headers are documented, and none were seen on the probed response.
+  see: rate-limits/translink-queensland-rate-limits.yml
+errors:
+  note: No error reference is published.
+community:
+  note: 'The open data page says: "If you’re interested in using our data, join the Translink Australia Google Group."'

@@ -1,0 +1,24 @@
+generated: '2026-10-22'
+method: none
+source:
+- https://translink.com.au/about-translink/open-data
+- https://zapier.com/apps/translink-queensland/integrations
+- https://zapier.com/apps/translink/integrations
+- https://n8n.io/integrations/translink-queensland/
+- https://composio.dev/toolkits/translink-queensland
+- https://monid.ai/tools/translink-queensland
+checked:
+- https://translink.com.au/about-translink/open-data
+- https://translink.com.au/about-translink/open-data/terms-and-conditions
+- https://composio.dev/toolkits/translink-queensland
+- https://monid.ai/tools/translink-queensland
+- https://n8n.io/integrations/translink-queensland/
+- https://zapier.com/apps/translink-queensland/integrations
+- https://zapier.com/apps/translink/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
+note: The open data docs name no integration partners or marketplace listings, and the contract (the GTFS-RT proto)
+  names no other service. The terms describe a scheme for listing third-party applications on the Translink website,
+  but no list of them was found on these pages.

@@ -1,0 +1,11 @@
+name: Translink rate limits
+generated: '2026-10-22'
+method: none
+source: https://translink.com.au/about-translink/open-data
+limit_count: 0
+limits: []
+checked:
+- https://translink.com.au/about-translink/open-data
+- https://translink.com.au/about-translink/open-data/terms-and-conditions
+- https://gtfsrt.api.translink.com.au/api/realtime/SEQ/alerts
+note: 'Neither the open data page nor its terms publish a rate limit. An unauthenticated GET of the SEQ alerts feed on 2026-10-22 returned 200 with no X-RateLimit-*, RateLimit-* or Retry-After headers. It did return cache-control: public, max-age=10, so the feed is cached for 10 seconds; that is a caching hint, not a stated limit.'

@@ -1,0 +1,15 @@
+generated: '2026-10-22'
+method: searched
+source: https://translink.com.au/about-translink/open-data
+standards:
+- id: gtfs
+  conforms: true
+  evidence: 'Open data page: "The General Transit Feed Specification (GTFS) defines a common format for public transport schedules ... Our GTFS schedules cover bus, train, ferry and tram services in South East Queensland and our regional bus services." (https://translink.com.au/about-translink/open-data)'
+- id: gtfs-realtime
+  conforms: true
+  version: '2.0'
+  evidence: 'Open data page: "This data is provided in the General Transit Feed Specification - Realtime (GTFS Realtime) v2.0 format, encoded in Google''s Protobuf format ... Our implementation of GTFS-RT v2 is based on this gtfs-realtime.proto version protobuf definition." Linked proto: https://gtfs.org/documentation/realtime/proto/ (saved at grpc/translink-queensland-gtfs-realtime.proto). Probed feed returned content-type application/x-protobuf.'
+  domain_standard: true
+- id: cc-by-4.0
+  conforms: true
+  evidence: 'Open data page: "Our data is licensed under a Creative Commons Attribution 4.0 International License." data.qld.gov.au CKAN package_show license_id: CC-BY-4.0.'

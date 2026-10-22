@@ -1,0 +1,21 @@
+name: Translink pricing
+generated: '2026-10-22'
+method: searched
+source: https://translink.com.au/about-translink/open-data/terms-and-conditions
+audience: developer-api
+pricing_basis: free
+published: false
+delivery:
+  delivery: managed
+plan_count: 1
+plans:
+- name: Open data
+  description: GTFS schedule datasets and GTFS Realtime feeds, licensed CC BY 4.0, with no authentication.
+  price: 0
+  price_text: The State currently offers the Data free of charge
+  features:
+  - GTFS schedule datasets (SEQ and regional)
+  - GTFS Realtime v2.0 trip updates, vehicle positions and alerts (SEQ and Cairns)
+  - Creative Commons Attribution 4.0 licence
+  limits: []
+note: 'The terms say the State "reserves the right to change, update, alter, add to or remove Data from time to time without notice." No paid tiers exist.'

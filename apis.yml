@@ -1,23 +1,141 @@
 aid: translink-queensland
-name: Translink Queensland
-description: 'Translink Queensland is a company surfaced via the API Evangelist harvest backlog (source:
-  australia-apidays-2026) and added to the network as a stub for full-pipeline profiling.'
+
+name: Translink
+
+description: 'Translink is the public transport division of the Queensland Government''s Department of Transport and Main
+  Roads, with statewide responsibility for buses, trains, ferries and trams across South East Queensland, regional bus services,
+  demand responsive transit, taxi regulation and long distance rail, coach and regional air services. Through its open data
+  program Translink publishes GTFS schedule datasets and unauthenticated GTFS Realtime v2.0 (Protobuf) feeds of trip updates,
+  vehicle positions and alerts at gtfsrt.api.translink.com.au, licensed CC BY 4.0. (Harvest source: australia-apidays-2026.)'
+
 url: https://raw.githubusercontent.com/api-evangelist/translink-queensland/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:australia-apidays-2026
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-22 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-10-22'
+
 modified: '2026-10-22'
+
 tags:
 - Company
-apis: []
+- Public Transport
+- Transit
+- GTFS
+- GTFS Realtime
+- Open Data
+- Government
+- Queensland
+- Australia
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
+image: https://framework.transinfo.com.au/v2.5.2.19619/images/logos/MyTL-app-icon@180.png
+
 common:
+- type: Plans
+  url: plans/translink-queensland-plans-pricing.yml
+- type: Conventions
+  url: conventions/translink-queensland-conventions.yml
+- type: Lifecycle
+  url: lifecycle/translink-queensland-lifecycle.yml
+- type: Conformance
+  url: conformance/translink-queensland-conformance.yml
+- type: WellKnown
+  url: well-known/translink-queensland-well-known.yml
+- type: Hosts
+  url: hosts/translink-queensland-hosts.yml
 - type: Website
   url: https://translink.com.au/
+- type: Documentation
+  url: https://translink.com.au/about-translink/open-data
+- type: TermsOfService
+  url: https://translink.com.au/about-translink/open-data/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://translink.com.au/legal/privacy
+- type: Support
+  url: https://translink.com.au/contact-us
+- type: Forum
+  url: https://groups.google.com/forum/#!forum/translink-australia-opendata
+- type: News
+  url: https://translink.com.au/news-and-media/releases
+- type: Twitter
+  url: https://x.com/Translink_QLD
+- type: Facebook
+  url: https://www.facebook.com/TransLinkQLD
+- type: Instagram
+  url: https://instagram.com/TransLinkQLD
+- type: DomainSecurity
+  url: security/translink-queensland-domain-security.yml
+
+apis:
+- aid: translink-queensland:gtfs-realtime
+  name: Translink GTFS Realtime Feeds
+  description: 'Unauthenticated GTFS Realtime v2.0 feeds, encoded in Protobuf, of trip updates, vehicle positions and service
+    alerts for South East Queensland (whole network and per mode: bus, rail, tram, ferry) and Cairns. Translink states its
+    implementation is based on the gtfs-realtime.proto definition at gtfs.org, and that the feeds must be used with its GTFS
+    schedules. Licensed CC BY 4.0.'
+  humanURL: https://translink.com.au/about-translink/open-data
+  baseURL: https://gtfsrt.api.translink.com.au/api/realtime
+  tags:
+  - GTFS Realtime
+  - Protobuf
+  - Transit
+  - Open Data
+  properties:
+  - type: Protobuf
+    url: grpc/translink-queensland-gtfs-realtime.proto
+    name: gtfs-realtime.proto
+    description: Verbatim copy of the GTFS Realtime protobuf definition (GTFS Specifications Authors, github.com/google/transit).
+      Translink does not author it; its open data page states "Our implementation of GTFS-RT v2 is based on this gtfs-realtime.proto"
+      and links https://gtfs.org/documentation/realtime/proto/.
+  - type: Documentation
+    url: https://translink.com.au/about-translink/open-data
+  - type: TermsOfService
+    url: https://translink.com.au/about-translink/open-data/terms-and-conditions
+- aid: translink-queensland:gtfs-schedules
+  name: Translink GTFS Schedule Datasets
+  description: GTFS static schedule datasets (timetables, route paths, stopping patterns) for SEQ bus, train, ferry and tram
+    services and Queensland regional bus services, published as downloadable resources on the Queensland Government open data
+    portal (data.qld.gov.au).
+  humanURL: https://translink.com.au/about-translink/open-data
+  tags:
+  - GTFS
+  - Transit
+  - Open Data
+  properties:
+  - type: Documentation
+    url: https://translink.com.au/about-translink/open-data
+  - type: Dataset
+    url: https://www.data.qld.gov.au/dataset/general-transit-feed-specification-gtfs-translink
+
+x-coverage:
+  state: covered
+  reason: identity-verified
+  detail: Website translink.com.au verified (200, title "Translink"); who-we-are page names it a division of Queensland Department
+    of Transport and Main Roads; open data page documents GTFS and GTFS-RT feeds.
+  evidence:
+  - url: https://translink.com.au/
+    status: 200
+  - url: https://translink.com.au/about-translink/who-we-are
+    status: 200
+  - url: https://translink.com.au/about-translink/open-data
+    status: 200
+  - url: https://gtfsrt.api.translink.com.au/api/realtime/SEQ/alerts
+    status: 200
+x-enrichment:
+  date: '2026-10-22'
+  status: enriched
+  artifacts_added: 19
+  pass: modular-v1
+  engine: identity=anthropic,contract=anthropic,surfaces=anthropic,docs=anthropic,regulatory=anthropic

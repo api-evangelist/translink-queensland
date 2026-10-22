@@ -1,0 +1,70 @@
+name: Translink GTFS Realtime MCP Server (candidate)
+type: MCPServer
+provider: translink-queensland
+generated: '2026-10-22'
+method: derived
+status: candidate
+source: https://translink.com.au/about-translink/open-data
+description: >-
+  Translink does not publish or advertise an MCP server (no MCP docs on translink.com.au; a web search for a
+  Translink Queensland MCP server returned none, 2026-10-22). This is a CANDIDATE tool list derived from the
+  GTFS Realtime feed URLs Translink documents on its open data page. There is no OpenAPI for these feeds; each
+  feed is an unauthenticated GET returning a GTFS-RT v2.0 FeedMessage encoded in Protobuf
+  (grpc/translink-queensland-gtfs-realtime.proto). No server exists and none was called.
+deployment:
+  mode: none
+  auth: none
+  verified: derived
+evidence:
+  - url: https://translink.com.au/about-translink/open-data
+    status: 200
+    note: lists the gtfsrt.api.translink.com.au feed URLs below (https://translink.com.au/about-translink/open-data/gtfs-rt 301-redirects here)
+  - url: https://translink.com.au/llms.txt
+    status: 404
+base_url: https://gtfsrt.api.translink.com.au/api/realtime
+tools:
+  - name: get_service_alerts
+    description: Fetch the GTFS-RT service alerts feed for a region.
+    inputSchema:
+      type: object
+      properties:
+        region: {type: string, enum: [SEQ, CNS], description: "SEQ = South East Queensland, CNS = Cairns"}
+      required: [region]
+    backing: ["GET /{region}/alerts"]
+  - name: get_trip_updates
+    description: Fetch the GTFS-RT trip updates feed for a region, optionally filtered to one SEQ mode.
+    inputSchema:
+      type: object
+      properties:
+        region: {type: string, enum: [SEQ, CNS]}
+        mode: {type: string, enum: [Bus, Ferry, Rail, Tram], description: "SEQ only; omit for the whole network"}
+      required: [region]
+    backing: ["GET /{region}/TripUpdates", "GET /SEQ/TripUpdates/{mode}"]
+  - name: get_vehicle_positions
+    description: Fetch the GTFS-RT vehicle positions feed for a region, optionally filtered to one SEQ mode.
+    inputSchema:
+      type: object
+      properties:
+        region: {type: string, enum: [SEQ, CNS]}
+        mode: {type: string, enum: [Bus, Ferry, Rail, Tram], description: "SEQ only; omit for the whole network"}
+      required: [region]
+    backing: ["GET /{region}/VehiclePositions", "GET /SEQ/VehiclePositions/{mode}"]
+documented_feeds:
+  - https://gtfsrt.api.translink.com.au/api/realtime/SEQ/alerts
+  - https://gtfsrt.api.translink.com.au/api/realtime/SEQ/TripUpdates
+  - https://gtfsrt.api.translink.com.au/api/realtime/SEQ/TripUpdates/Bus
+  - https://gtfsrt.api.translink.com.au/api/realtime/SEQ/TripUpdates/Ferry
+  - https://gtfsrt.api.translink.com.au/api/realtime/SEQ/TripUpdates/Rail
+  - https://gtfsrt.api.translink.com.au/api/realtime/SEQ/TripUpdates/Tram
+  - https://gtfsrt.api.translink.com.au/api/realtime/SEQ/VehiclePositions
+  - https://gtfsrt.api.translink.com.au/api/realtime/SEQ/VehiclePositions/Bus
+  - https://gtfsrt.api.translink.com.au/api/realtime/SEQ/VehiclePositions/Ferry
+  - https://gtfsrt.api.translink.com.au/api/realtime/SEQ/VehiclePositions/Rail
+  - https://gtfsrt.api.translink.com.au/api/realtime/SEQ/VehiclePositions/Tram
+  - https://gtfsrt.api.translink.com.au/api/realtime/CNS/alerts
+  - https://gtfsrt.api.translink.com.au/api/realtime/CNS/TripUpdates
+  - https://gtfsrt.api.translink.com.au/api/realtime/CNS/VehiclePositions
+notes:
+  - Responses are binary Protobuf, not JSON; a server would need to decode FeedMessage before returning results to an agent.
+  - Translink states the realtime feeds must be used together with its GTFS schedule datasets (data.qld.gov.au).
+  - Licensed CC BY 4.0 per Translink's open data terms.

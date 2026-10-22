@@ -1,0 +1,7 @@
+generated: '2026-10-22'
+method: none
+source: https://translink.com.au/about-translink/open-data
+docs: https://translink.com.au/about-translink/open-data
+schemes: []
+authentication_required: false
+note: 'The open data page states verbatim: "Authentication is not required to use the feed." A GET of the documented feed https://gtfsrt.api.translink.com.au/api/realtime/SEQ/alerts with no credentials returned HTTP 200 application/x-protobuf on 2026-10-22. No API key, OAuth or other scheme is documented; the GTFS schedule datasets are public downloads on data.qld.gov.au.'

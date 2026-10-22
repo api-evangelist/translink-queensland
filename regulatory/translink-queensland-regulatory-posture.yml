@@ -1,0 +1,66 @@
+generated: '2026-10-22'
+method: searched
+probe: true
+source:
+- https://translink.com.au/legal/privacy
+- https://translink.com.au/about-translink/open-data/terms-and-conditions
+scope_note: >-
+  Read from Translink's own Privacy statement (https://translink.com.au/legal/privacy, HTTP 200) and its Open data
+  terms and conditions (https://translink.com.au/about-translink/open-data/terms-and-conditions, HTTP 200), both
+  fetched 2026-10-22. The privacy statement covers Translink's customer services (go card, contactless payments,
+  apps and websites). The open data terms govern the GTFS/GTFS-RT feeds but say nothing on any signal below. Quotes
+  are copied from the pages with their whitespace collapsed. The statement defines "Children" as people under 18
+  (Section 45 IP Act) in its Definitions table but describes no age check, so age_assurance is not recorded.
+  No signal is recorded on breach notification, data residency or overseas transfer, accessibility conformance,
+  or AI, because these pages do not address them.
+signals:
+  data_subject_request:
+    url: https://translink.com.au/legal/privacy
+    section: Access, amendment and deletion
+    note: >-
+      Under the Information Privacy Act 2009 (Qld), people can ask for access to and amendment of their personal
+      information. They can ask for deletion of mobile-app accounts and of data tied to Meta-integrated services.
+      Requests go through the relevant online service or app, or through the contact form. Translink can refuse on
+      public-interest grounds or to meet record-keeping duties. The page mentions no portability right and no API
+      for these requests.
+    evidence:
+    - source: https://translink.com.au/legal/privacy
+      http_status: 200
+      fetched: '2026-10-22'
+      quote: "You have a right to request access to personal information held by us and may also use Translink's online services and Translink mobile applications to access, update and amend certain personal information."
+    - source: https://translink.com.au/legal/privacy
+      http_status: 200
+      fetched: '2026-10-22'
+      quote: "We may decline to provide access to amend or delete information, where we are legally permitted to do so. We will explain the basis for our decision when responding to your request or otherwise, within a reasonable time."
+  subprocessors:
+    url: https://translink.com.au/legal/privacy
+    section: Storage and security
+    note: >-
+      Says external entities and service providers handle personal information for Translink and are bound by the
+      IP Act and by contractual security requirements. Google Analytics is the only provider named, under the
+      analytics section. No subprocessor list is published.
+    evidence:
+    - source: https://translink.com.au/legal/privacy
+      http_status: 200
+      fetched: '2026-10-22'
+      quote: "Translink regularly engages external entities to perform some of its functions and activities. Where these arrangements require access to, or collection of personal information on behalf of Translink, we take all reasonable steps to ensure that these entities are bound to comply with the IP Act."
+    - source: https://translink.com.au/legal/privacy
+      http_status: 200
+      fetched: '2026-10-22'
+      quote: "Service providers engaged to process personal information on our behalf are contractually required to implement appropriate security measures to protect your personal information."
+  data_retention:
+    url: https://translink.com.au/legal/privacy
+    section: Contactless payments
+    note: >-
+      Lists the data kept for unregistered smart cards and contactless payments (travel history and financial
+      transactions). It also names the Public Records Act 2023 (Qld) record-keeping duty as a reason to refuse
+      deletion. The page gives no retention period.
+    evidence:
+    - source: https://translink.com.au/legal/privacy
+      http_status: 200
+      fetched: '2026-10-22'
+      quote: "If you use a contactless credit or debit card, or a linked device such as a smart phone or watch, to pay for your journey the following information will be retained: travel history; and financial transactions associated with your travel."
+    - source: https://translink.com.au/legal/privacy
+      http_status: 200
+      fetched: '2026-10-22'
+      quote: "inconsistent with our obligations to maintain records under legislation including in the Public Records Act 2023"

@@ -1,0 +1,8 @@
+generated: '2026-10-22'
+method: none
+source: https://translink.com.au/about-translink/open-data
+packages: []
+checked:
+- https://translink.com.au/about-translink/open-data
+- https://registry.npmjs.org/-/v1/search?text=translink%20queensland
+note: The open data page names no SDK or client library. An npm search found no Translink-published package; the results were Queensland Government design-system packages, which are not Translink API clients.
